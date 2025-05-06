@@ -29,11 +29,11 @@ provider:
         - arn:aws:s3:::${file(config.json):S3_IMAGE_BUCKET}/*
 
 functions:
-  raynerfunction:
-    handler: handler.hello
+  raynerGetSignedUrl:
+    handler: handler.getSignedUrl
     events:
       - httpApi:
-          path: /
+          path: /signed-url
           method: get
 
 resources:
