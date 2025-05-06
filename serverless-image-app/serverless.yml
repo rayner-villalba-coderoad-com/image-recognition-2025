@@ -3,13 +3,22 @@ org: upbaws2025
 # "service" is the name of this project. This will also be added to your AWS resource names.
 service: serverless-image-app
 
+package:
+  individually: true
+  pattern:
+    - '!config.json'
+    - '!package.json'
+    - '!package-lock.json'
+    - '!README.md'
+    - '!serverless.yml'
+    - '!.gitignore' 
 provider:
   name: aws
   runtime: nodejs20.x
   region: ${file(config.json):AWS_REGION}
   environment:
     BUCKET_NAME: ${file(config.json):S3_IMAGE_BUCKET}
-    TABLE_NAME: ${file(config.json):DYNAMODB_TABLE}
+    TABLE_NAME: ${file(config.json):DYNAMODB_TABLE_NAME}
   
   iamRoleStatements:
     - Effect: "Allow"
