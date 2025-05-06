@@ -5,7 +5,7 @@ service: serverless-image-app
 
 package:
   individually: true
-  pattern:
+  patterns:
     - '!config.json'
     - '!package.json'
     - '!package-lock.json'
