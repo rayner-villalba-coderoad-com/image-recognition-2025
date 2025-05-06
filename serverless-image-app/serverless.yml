@@ -24,7 +24,7 @@ package:
     - package.json
     - package-lock.json
     - README.md
-    - .gitignore'
+    - .gitignore
     - .serverless/**
 functions:
   raynerGetSignedUrl:
