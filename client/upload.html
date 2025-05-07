@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Upload Image to S3</h2>
+  <input type="file" id="fileInput" />
+  <button onclick="uploadFile()">Upload</button>
+
+  <script>
+    async function uploadFile() {
+      const file = document.getElementById('fileInput').files[0];
+      if (!file) return alert('Select a file first.');
+
+      const apiUrl = 'https://6wswnzhi7j.execute-api.us-east-1.amazonaws.com/signed-url';
+      const res = await fetch(`${apiUrl}?filename=${file.name}&filetype=${file.type}`);
+      const { uploadURL } = await res.json();
+
+      const uploadRes = await fetch(uploadURL, {
+        method: 'PUT',
+        headers: { 'Content-Type': file.type },
+        body: file
+      });
+
+      if (uploadRes.ok) alert('Upload successful!');
+      else alert('Upload failed.');
+    }
+  </script>
+</body>
+</html>
