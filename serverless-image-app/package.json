@@ -5,7 +5,8 @@
   "main": "handler.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create_lambda_layer": "mkdir -p nodejs/node20 && cp -r node_modules nodejs/node20/ && zip -r layer_content.zip nodejs"
   },
   "keywords": [],
   "author": "",
